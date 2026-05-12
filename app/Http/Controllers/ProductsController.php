@@ -18,7 +18,7 @@ class ProductsController extends Controller
             'size' => $request->size]);
             return response()->json($product, 201);
     }
-    public function update(Request $request, $id){
+    public function update(Request $request, int $id){
         $product = Product::findOrFail($id);
         $product->update([
             'product_name' => $request->product_name,
@@ -27,7 +27,7 @@ class ProductsController extends Controller
             ]);
         return response()->json($product, 200);
     }
-    public function destroy($id){
+    public function destroy(int $id){
         $product = Product::findOrFail($id);
         $product->delete();
         return response()->json(['message' => 'Product deleted successfully'], 200);

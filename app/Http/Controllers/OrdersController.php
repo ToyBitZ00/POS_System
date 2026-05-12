@@ -21,12 +21,12 @@ class OrdersController extends Controller{
         ]); 
         return response()->json($order, 201); 
     } 
-    public function update(Request $request, $id){
+    public function update(Request $request, int $id){
         $order = Order::findOrFail($id);
         $order->update(['status' => $request->status]);
         return response()->json($order, 200);
     }
-    public function destroy($id){
+    public function destroy(int $id){
         $order = Order::findOrFail($id);
         $order->delete();
         return response()->json(['message' => 'Order deleted successfully'], 200);
